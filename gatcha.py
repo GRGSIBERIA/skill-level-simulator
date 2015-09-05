@@ -17,3 +17,9 @@ class Gatcha:
         elif choice > self.sr_prob:
             return card.SRare()
         return card.Rare()
+
+    def twist10(self):
+        retval = []
+        for i in range(10):
+            retval.append(self.twist())
+        return retval
