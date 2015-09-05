@@ -21,5 +21,5 @@ class Gatcha:
     def twist10(self):
         retval = []
         for i in range(10):
-            retval.append(self.twist())
+            retval.append(self.twist1())
         return retval
