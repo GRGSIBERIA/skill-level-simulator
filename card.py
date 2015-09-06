@@ -5,9 +5,9 @@ class Card:
         if self.rarity == "SSRare":
             return self.skill_level * 4 * 2
         elif self.rarity == "SRare":
-            return self.skill_level * 2
+            return self.skill_level * 4
         elif self.rarity == "Rare":
-            return self.skill_level
+            return self.skill_level * 2
 
     def __judgeLvup(self, cards):
         total = 0
