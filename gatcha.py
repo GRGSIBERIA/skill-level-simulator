@@ -12,9 +12,9 @@ class Gatcha:
 
     def twist1(self):
         choice = self.__getRandom()
-        if choice > self.ssr_prob:
+        if choice < self.ssr_prob:
             return card.SSRare()
-        elif choice > self.sr_prob:
+        elif choice < self.sr_prob:
             return card.SRare()
         return card.Rare()
 
