@@ -6,6 +6,12 @@ class Gatchatest(unittest.TestCase):
     def setUp(self):
         self.g = gatcha.Gatcha(3, 6)
 
+    def __getRarity(self, rarity):
+        while True:
+            c = self.g.twist1()
+            if c.rarity == rarity:
+                return c
+
     def test_twist1(self):
         c = self.g.twist1()
         if c.rarity == "SSRare":
@@ -18,6 +24,13 @@ class Gatchatest(unittest.TestCase):
     def test_twist10(self):
         cs = self.g.twist10()
         self.assertEqual(len(cs), 10)
+
+    def test_skillup_ssr(self):
+        c = self.__getRarity("SSRare")
+        e = [self.__getRarity("SRare")]
+        print c.need_point
+        self.assertEqual(c.skillup(e), False)
+        self.assertEqual(c.skillup(e * 2), True)
 
 if __name__ == '__main__':
     unittest.main()

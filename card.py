@@ -3,11 +3,11 @@
 class Card:
     def __setNeedPoint(self):
         if self.rarity == "SSRare":
-            self.need_point = self.skill_level * 4 * 2
+            return self.skill_level * 4 * 2
         elif self.rarity == "SRare":
-            self.need_point = self.skill_level * 2
+            return self.skill_level * 2
         elif self.rarity == "Rare":
-            self.need_point = self.skill_level
+            return self.skill_level
 
     def __judgeLvup(self, cards):
         total = 0
