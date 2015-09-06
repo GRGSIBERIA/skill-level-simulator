@@ -54,12 +54,13 @@ class Gatchatest(unittest.TestCase):
         ssr = self.__getRarity("SSRare")
         sr = [self.__getRarity("SRare")]
         r = [self.__getRarity("Rare")]
-
         self.assertEqual(ssr.skillup(sr + r * 4), True)
-        
+
     def test_total_point(self):
         sr = [self.__getRarity("SRare")]
+        r = [self.__getRarity("Rare")]
         self.assertEqual(card.totalPoint(sr * 2), 8)
+        self.assertEqual(card.totalPoint(sr * 2 + r * 4), 12)
 
 if __name__ == '__main__':
     unittest.main()
