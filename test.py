@@ -31,6 +31,12 @@ class Gatchatest(unittest.TestCase):
         self.assertEqual(c.skillup(e), False)
         self.assertEqual(c.skillup(e * 2), True)
 
+        self.assertEqual(c.skillup(e * 4), True)
+        self.assertEqual(c.skill_level, 3)
+        self.assertEqual(c.need_point, 3 * 4 * 2)
+        self.assertEqual(c.skillup(e * 6), True)
+        self.assertEqual(c.skill_level, 4)
+
     def test_skillup_sr(self):
         c = self.__getRarity("SRare")
         e = [self.__getRarity("Rare")]
@@ -42,6 +48,15 @@ class Gatchatest(unittest.TestCase):
         e = [self.__getRarity("Rare")]
         self.assertEqual(c.skillup(e), False)
         self.assertEqual(c.skillup(e * 2), True)
+
+    def test_skilluped(self):
+        ssr = self.__getRarity("SSRare")
+        sr = [self.__getRarity("SRare")]
+        r = [self.__getRarity("Rare")]
+
+        self.assertEqual(ssr.skillup(sr + r * 4), True)
+        
+        
 
 if __name__ == '__main__':
     unittest.main()
