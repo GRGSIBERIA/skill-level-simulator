@@ -1,19 +1,15 @@
 #-*- encoding: cp932
 
 class Card:
-    def __init__(self, rarity, point):
+    def __init__(self, rarity, base_point):
         self.skill_level = 1
         self.rarity = rarity
-        self.point = point
+        self.base_point = base_point
+        self.point = base_point
 
     def skillup(self):
         self.skill_level += 1
-        if self.rarity == "SSRare":
-            self.point = self.skill_level * 4 * 2
-        elif self.rarity == "SRare":
-            self.point = self.skill_level * 4
-        else:
-            self.point = self.skill_level
+        self.point = self.skill_level * self.base_point
 
 class SSRare(Card):
     def __init__(self):
