@@ -1,5 +1,11 @@
 #-*- encoding: cp932
 
+def totalPoint(cards):
+    total = 0
+    for card in cards:
+        total += card.point
+    return total
+
 class Card:
     def __setNeedPoint(self):
         if self.rarity == "SSRare":
@@ -10,10 +16,8 @@ class Card:
             return self.skill_level * 2
 
     def __judgeLvup(self, cards):
-        total = 0
-        for card in cards:
-            total += card.point
-
+        total = totalPoint(cards)
+        
         if total >= self.need_point:
             return True
         return False

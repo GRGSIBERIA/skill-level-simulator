@@ -1,6 +1,7 @@
 #-*- encoding: cp932
 import unittest
 import gatcha
+import card
 
 class Gatchatest(unittest.TestCase):
     def setUp(self):
@@ -56,7 +57,9 @@ class Gatchatest(unittest.TestCase):
 
         self.assertEqual(ssr.skillup(sr + r * 4), True)
         
-        
+    def test_total_point(self):
+        sr = [self.__getRarity("SRare")]
+        self.assertEqual(card.totalPoint(sr * 2), 8)
 
 if __name__ == '__main__':
     unittest.main()
