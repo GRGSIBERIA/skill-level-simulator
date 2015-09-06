@@ -9,15 +9,29 @@ class Card:
         elif self.rarity == "Rare":
             self.need_point = self.skill_level
 
+    def __judgeLvup(self, cards):
+        total = 0
+        for card in cards:
+            total += card.point
+
+        if total >= self.need_point:
+            return True
+        return False
+
     def __init__(self, rarity, base_point):
         self.skill_level = 1
         self.rarity = rarity
         self.base_point = base_point
         self.need_point = self.__setNeedPoint()
+        self.point = self.skill_level * self.base_point
 
-    def skillup(self):
-        self.skill_level += 1
-        self.need_point = self.__setNeedPoint()
+    def skillup(self, cards):
+        if self.__judgeLvup(cards):
+            self.skill_level += 1
+            self.need_point = self.__setNeedPoint()
+            self.point = self.skill_level * self.base_point
+            return True
+        return False
 
 class SSRare(Card):
     def __init__(self):
