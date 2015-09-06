@@ -20,13 +20,13 @@ class Gatcha:
 
     def twist10(self):
         retval = []
-        has_not_rare = True
+        has_not_srare = True
         for i in range(10):
             c = self.twist1()
             retval.append(c)
             if c.rarity != "Rare":
-                has_not_rare = False
+                has_not_srare = False
 
-        if has_not_rare:
+        if has_not_srare:
             retval[0] = card.SRare()
         return retval
