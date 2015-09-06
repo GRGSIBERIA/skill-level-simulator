@@ -7,7 +7,7 @@ def totalPoint(cards):
     return total
 
 class Card:
-    def __setNeedPoint(self):
+    def __initNeedPoint(self):
         if self.rarity == "SSRare":
             return self.skill_level * 4 * 2
         elif self.rarity == "SRare":
@@ -26,7 +26,7 @@ class Card:
         self.skill_level = 1
         self.rarity = rarity
         self.base_point = base_point
-        self.need_point = self.__setNeedPoint()
+        self.need_point = self.__initNeedPoint()
         self.point = self.skill_level * self.base_point
 
     def skillup(self, cards):
