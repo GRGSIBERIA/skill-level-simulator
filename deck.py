@@ -30,8 +30,17 @@ class Deck:
         elif c.rarity == "Rare":
             self.rs[func(c)].append(c)
 
+    def __totalType(self, cards):
+        total = 0
+        for level in cards:
+            total += len(level)
+        return total
+
     def total(self):
-        return len(self.ssrs) + len(self.srs) + len(self.rs)
+        return self.__totalType(self.ssrs) + \
+                self.__totalType(self.srs) + \
+                self.__totalType(self.rs)
+
 
     def insert(self, cards):
         if self.total() > self.__max_cards:
