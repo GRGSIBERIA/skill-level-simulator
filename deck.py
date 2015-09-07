@@ -7,6 +7,28 @@ class Deck:
         self.ssrs = []
         self.srs = []
         self.rs = []
+        for i in range(10):
+            self.ssrs.append([])
+            self.srs.append([])
+            self.rs.append([])
+
+        self.waifu = None
+
+    def __findCard(self, cards, c):
+        for level in cards:
+            for i in range(len(level))
+                if level[i] == c:
+                    del level[i]
+                    return True
+        return False
+
+    def __appendForSkillLevel(self, c, func):
+        if c.rarity == "SSRare":
+            self.ssrs[func(c)].append(c)
+        elif c.rarity == "SRare":
+            self.srs[func(c)].append(c)
+        elif c.rarity == "Rare":
+            self.rs[func(c)].append(c)
 
     def total(self):
         return len(self.ssrs) + len(self.srs) + len(self.rs)
@@ -15,13 +37,13 @@ class Deck:
         if self.total() > self.__max_cards:
             raise ArgumentError, "can't insert cards, too many cards in this deck."
 
-        for card in cards:
-            if card.rarity == "SSRare":
-                self.ssrs.append(card)
-            elif card.rarity == "SRare":
-                self.srs.append(card)
-            elif card.rarity == "Rare":
-                self.rs.append(card)
+       for c in cards:
+           self.__appendForSkillLevel(c, lambda x: 0)
 
-    def skillup(self):
-        pass
+    def setWaifu(self, c):
+        self.waifu = c
+        if not self.__findCard(self.ssrs, c):
+            if not self.__findCard(self.srs, c):
+                if not self.__findCard(self.rs, c):
+                    raise ArgumentError, "don't have selected waifu card."
+        self.__appendForSkillLevel(c, lambda x: x.skill_level - 1)

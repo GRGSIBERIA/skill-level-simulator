@@ -38,7 +38,7 @@ if __name__ == '__main__':
                 print e.message
 
         elif command == "u":
-            pass
+            deck.skillup()
 
         elif command == "s":
             pass
