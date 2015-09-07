@@ -41,7 +41,6 @@ class Deck:
                 self.__totalType(self.srs) + \
                 self.__totalType(self.rs)
 
-
     def insert(self, cards):
         if self.total() > self.__max_cards:
             raise ArgumentError, "can't insert cards, too many cards in this deck."

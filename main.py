@@ -3,12 +3,14 @@ import sys
 import gatcha as g
 import deck as d
 import wallet as w
+import status as s
 
 if __name__ == '__main__':
     MAX_CARDS = 40
     gatcha = g.Gatcha(3, 6)
     deck = d.Deck(MAX_CARDS)
     wallet = w.Wallet()
+    status = s.Status(deck, wallet)
     end_flag = False
 
     while not end_flag:
