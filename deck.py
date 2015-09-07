@@ -22,3 +22,6 @@ class Deck:
                 self.srs.append(card)
             elif card.rarity == "Rare":
                 self.rs.append(card)
+
+    def skillup(self):
+        pass

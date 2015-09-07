@@ -17,11 +17,11 @@ if __name__ == '__main__':
         print "Spend: %s yen" % (wallet.total)
         print ""
         print "command?"
-        print "twist 1 => t1"
-        print "twist 10 => t10"
-        print "skillup => u"
-        print "status => s"
-        print "quit => q"
+        print "t1 : twist1"
+        print "t10: twist10"
+        print "u  : skillup"
+        print "s  : status"
+        print "q  : quit"
         command = raw_input()
         
         if command == "t1":
@@ -30,13 +30,18 @@ if __name__ == '__main__':
             deck.insert([card])
 
         elif command == "t10":
-            wallet.withdraw(10)
-            cards = gatcha.twist10()
-            deck.insert(cards)
+            try:
+                wallet.withdraw(10)
+                cards = gatcha.twist10()
+                deck.insert(cards)
+            except ArgumentError as e
+                print e.message
 
         elif command == "u":
             pass
+
         elif command == "s":
             pass
+
         elif command == "q":
             end_flag = True
